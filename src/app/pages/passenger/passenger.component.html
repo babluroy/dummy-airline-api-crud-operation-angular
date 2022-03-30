@@ -1,0 +1,86 @@
+<ng-container>
+    <div class="mb-4 mt-4">
+        <button class="btn btn-dark" (click)="toggleModal()">Add Passenger</button>
+    </div>
+
+
+    <!-- MODAL -->
+    <div *ngIf="showForm">
+        <div class="modal-content p-4">
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Name" name="name" [(ngModel)]="formData.name">
+                </div>
+                <div class="col-md-6">
+                    <label for="trips" class="form-label">Trips</label>
+                    <input type="number" class="form-control" name="trips" placeholder="Trips"
+                        [(ngModel)]="formData.trips">
+                </div>
+                <div class="col-12">
+                    <label for="airline" class="form-label">Airline</label>
+                    <input type="number" class="form-control" name="airline" placeholder="Airline"
+                        [(ngModel)]="formData.airline">
+                </div>
+                <div class="col-12">
+                    <span *ngIf="!updateBtn">
+                        <button class="btn btn-primary mx-3" (click)="onSubmit()">Submit</button>
+                    </span>
+                    <span *ngIf="updateBtn">
+                        <button class="btn btn-primary mx-3" (click)="updatePassenger()">Update</button>
+                    </span>
+
+                    <button class="btn btn-secondary" (click)="toggleModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div *ngIf="deleteModal">
+        <div class="modal-container">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Passenger</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            (click)="toggleDeleteModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure ?
+                        <p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            (click)="toggleDeleteModal()">Close</button>
+                        <button type="button" class="btn btn-danger" (click)="deletePassenger()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <app-passenger-card [passengers]="passengers" (updateDataEvent)="fetchPassengerData($event)"
+        (deleteDataEvent)="fetchId($event)"></app-passenger-card>
+
+    <div *ngIf="passengers?.length == 0">
+        <div class="text-center mt-5">
+            <div class="spinner-border spinner-grow-mg text-dark" role="status">
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="passengers.length > 0">
+        <button class="btn btn-dark mx-3" (click)="nextPage()">
+            Previous
+        </button>
+        <button class="btn btn-success" (click)="prevPage()">
+            Next
+        </button>
+
+
+
+    </div>
+</ng-container>

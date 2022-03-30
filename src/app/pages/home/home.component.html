@@ -1,0 +1,99 @@
+<ng-container class="mb-4">
+
+    <div class="mb-4 mt-4" (click)="toggleModal()">
+        <button class="btn btn-dark">Add Airline</button>
+    </div>
+    <!-- MODAL -->
+    <div *ngIf="showForm">
+        <div class="modal-content">
+            <span class="close" (click)="toggleModal()">X</span>
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="id" class="col-form-label">ID</label>
+                        <input type="text" class="form-control" name="id" id="id" formControlName="id"
+                            [ngClass]="{ 'is-invalid': submitted && formRef.id.errors }">
+                        <div *ngIf="submitted && formRef.id.errors" class="text-warning">
+                            <div *ngIf="formRef.id.errors.required">
+                                ID is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="name" class="col-form-label">Name</label>
+                        <input class="form-control" name="name" id="name" formControlName="name">
+                        <div *ngIf="submitted && formRef.name.errors" class="text-warning">
+                            <div *ngIf="formRef.name.errors.required">
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="country" class="col-form-label">Country</label>
+                        <input class="form-control" name="country" id="country" formControlName="country">
+                        <div *ngIf="submitted && formRef.country.errors" class="text-warning">
+                            <div *ngIf="formRef.country.errors.required">
+                                Country is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="logo" class="col-form-label">Logo URL</label>
+                        <input class="form-control" name="logo" id="logo" formControlName="logo">
+                        <div *ngIf="submitted && formRef.logo.errors" class="text-warning">
+                            <div *ngIf="formRef.logo.errors.required">
+                                Logo is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="slogan" class="col-form-label">Slogan</label>
+                        <input class="form-control" name="slogan" id="slogan" formControlName="slogan">
+                        <div *ngIf="submitted && formRef.slogan.errors" class="text-warning">
+                            <div *ngIf="formRef.slogan.errors.required">
+                                Slogan is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="head_quaters" class="col-form-label">Head Quaters</label>
+                        <input class="form-control" name="head_quaters" id="head_quaters"
+                            formControlName="head_quaters">
+                        <div *ngIf="submitted && formRef.head_quaters.errors" class="text-warning">
+                            <div *ngIf="formRef.head_quaters.errors.required">
+                                Head Quater is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="website" class="col-form-label">Website</label>
+                        <input class="form-control" name="website" id="website" formControlName="website">
+                        <div *ngIf="submitted && formRef.website.errors" class="text-warning">
+                            <div *ngIf="formRef.website.errors.required">
+                                Website is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 col-lg-6 col-sm-12">
+                        <label for="established" class="col-form-label">Established</label>
+                        <input class="form-control" name="established" id="established" formControlName="established">
+                        <div *ngIf="submitted && formRef.established.errors" class="text-warning">
+                            <div *ngIf="formRef.established.errors.required">
+                                Established Year is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div>
+                <button type="button" class="btn btn-secondary mx-3" (click)="toggleModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()">Create Airline</button>
+            </div>
+        </div>
+    </div>
+
+
+    <app-airline-card [airlines]="airlines"></app-airline-card>
+
+
+</ng-container>

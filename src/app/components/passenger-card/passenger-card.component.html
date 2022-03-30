@@ -1,0 +1,24 @@
+<div class="row mt-4 mb-4">
+    <ng-container *ngFor="let passenger of passengers">
+        <div class="col-md-3 col-lg-3 col-sm-12">
+            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card-header">Trips: {{passenger.trips}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{passenger.name}}</h5>
+                    <div *ngIf="passenger.airline">
+                        <p class="card-text">
+                            {{passenger.airline[0].name}}
+                            <br />
+                            {{passenger.airline[0].country}}
+                        </p>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-info mx-2" (click)="updateDataEvent.emit(passenger._id)">Update</button>
+                        <button class="btn btn-danger" (click)="deleteDataEvent.emit(passenger._id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+</div>

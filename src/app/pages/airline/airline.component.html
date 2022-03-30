@@ -1,0 +1,20 @@
+<div *ngIf="airline">
+    <div class="card mb-3 mt-4">
+        <img [src]="airline.logo" class="card-img-top airline-logo" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{airline.name}}</h5>
+            <p class="card-text">
+                {{airline.slogan}}
+                <br />
+                {{airline.country}}
+                <br />
+                {{airline.head_quaters}}
+                <br />
+                {{airline.website}}
+            </p>
+            <p class="card-text"><small class="text-muted">
+                    Estd in: {{airline.established}}
+                </small></p>
+        </div>
+    </div>
+</div>

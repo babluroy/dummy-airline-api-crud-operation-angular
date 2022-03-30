@@ -1,0 +1,25 @@
+<div class="row" *ngIf="airlines">
+    <ng-container *ngFor="let airline of airlines">
+        <div class="col-md-3 col-lg-3 col-sm-12 mb-2 mt-4">
+            <a [routerLink]="['/airline']" [queryParams]="{airline:airline.id}">
+                <div class="card">
+                    <img [src]="airline.logo" class="card-img-top airline-logo">
+                    <div class="card-body">
+                        <h5 class="card-title">{{airline.name}}</h5>
+                        <p class="card-text">
+                            {{airline.country}}
+                            <br />
+                            {{airline.slogan}}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </ng-container>
+    <div *ngIf="airlines?.length == 0">
+        <div class="text-center mt-5">
+            <div class="spinner-border spinner-grow-mg text-dark" role="status">
+            </div>
+        </div>
+    </div>
+</div>
